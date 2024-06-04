@@ -28,9 +28,8 @@
           <span class="align-middle">Sistem Informasi Layanan Sub-Bagian Umum dan BMN FKIP ULM</span>
         </a>
 
-				<ul class="sidebar-nav">
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
+				<ul class="sidebar-item active">
+			            <a class="sidebar-link">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
@@ -201,33 +200,21 @@
                 <img src="assets/img/profile.jpeg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#">Log out</a>
+								<a class="dropdown-item" href="logout-user">Log out</a>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</nav>
 
-			<main class="content">
-				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Ini halaman dashboard</h1>
+                  <main class="content">
+                        @yield('container')
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Pilihan antara tempat atau alat</h5>
-								</div>
-								<div class="card-body">
-								</div>
-							</div>
-						</div>
-					</div>
+                  </main>
 
-				</div>
-			</main>
 
+                  
 			<footer class="footer">
 				<div class="container-fluid">
 					<div class="row text-muted">

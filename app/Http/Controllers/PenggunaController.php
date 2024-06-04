@@ -8,6 +8,6 @@ class PenggunaController extends Controller
 {
     public function show()
     {
-        return view('layouts/pengguna');
+        return view('pengguna/pengguna');
     }
 }

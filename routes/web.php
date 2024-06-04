@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenggunaController;
 
@@ -14,8 +15,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
+Route::get('/admin', [AdminController::class, 'show'])->name('admin');
+// Route::get('/admin-alat', [AdminController::class, 'show'])->name('admin-alat');
 
-Route::group(['middleware' => ['auth']], function(){
-    Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+Route::get('logout-user', function(){
+    Auth::logout();
+    return redirect('/');
+})->name('logout-user');
 
-});
