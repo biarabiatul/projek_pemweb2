@@ -30,5 +30,10 @@ Route::get('logout-user', function(){
     return redirect('/');
 })->name('logout-user');
 
+Route::get('logout-user', function(){
+    Auth::logout();
+    return redirect('/');
+})->name('logout-user');
+
     
 
