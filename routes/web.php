@@ -16,7 +16,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
-<<<<<<< Updated upstream
 Route::get('/admin', [AdminController::class, 'show'])->name('admin');
 Route::get('/adminalat', [AdminController::class, 'showalat'])->name('adminalat');
 Route::get('/admintempat', [AdminController::class, 'showtempat'])->name('admintempat');
@@ -26,13 +25,10 @@ Route::get('logout-user', function(){
     Auth::logout();
     return redirect('/');
 })->name('logout-user');
-=======
 Route::get('logout-user', function(){
     Auth::logout();
     return redirect('/');
 })->name('logout-user');
 
-Route::group(['middleware' => ['auth']], function(){
     
->>>>>>> Stashed changes
 
