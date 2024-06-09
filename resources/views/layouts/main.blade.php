@@ -29,10 +29,9 @@
           <span class="align-middle">Sistem Informasi Layanan Sub-Bagian Umum dan BMN FKIP ULM</span>
         </a>
 
-				<ul class="sidebar-item">
-					<li>
-			            <a class="sidebar-link" href="{{ route("admin") }}">
-						<i class="bi bi-sliders2-vertical"></i> <span class="align-middle">Dashboard</span>
+				<ul class="sidebar-item active">
+					<a class="sidebar-link">
+              			<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
@@ -202,7 +201,7 @@
                 <img src="assets/img/profile.jpeg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="logout-user">Log out</a>
+								<a class="dropdown-item" href="{{ route('logout-user') }}">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -235,5 +234,4 @@
 	<script src="{{ asset('static/js/app.js') }}"></script>
 
 </body>
-
 </html>
