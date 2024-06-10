@@ -11,4 +11,12 @@ class AdminController extends Controller
     {
         return view('admin/admin');
     }
+    public function showalat() 
+    {
+        return view('admin/adminalat');
+    }
+    public function showtempat() 
+    {
+        return view('admin/admintempat');
+    }
 }

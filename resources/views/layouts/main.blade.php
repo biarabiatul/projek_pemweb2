@@ -18,6 +18,7 @@
 
 	<link href="{{ asset('static/css/app.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -28,22 +29,23 @@
           <span class="align-middle">Sistem Informasi Layanan Sub-Bagian Umum dan BMN FKIP ULM</span>
         </a>
 
-				<ul class="sidebar-item active">
-			            <a class="sidebar-link">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+				<ul class="sidebar-item">
+					<li>
+			            <a class="sidebar-link" href="{{ route("admin") }}">
+						<i class="bi bi-sliders2-vertical"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Peminjaman Tempat</span>
+						<a class="sidebar-link" href="{{ route("admintempat") }}">
+							<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span>
 			  
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Peminjaman Alat</span>
+						<a class="sidebar-link" href="{{ route("adminalat") }}">
+							<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span>
             </a>
 					</li>
 
