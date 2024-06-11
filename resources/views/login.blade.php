@@ -23,9 +23,9 @@
                             <form method="POST" action="{{ route('login.auth') }}" class="needs-validation" novalidate="" autocomplete="off">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="mb-2 text-muted" for="name">Nama</label>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('email') }}" required autofocus>
-                                    @error('name')
+                                    <label class="mb-2 text-muted" for="nim">Username</label>
+                                    <input id="nim" type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" required autofocus>
+                                    @error('nim')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
