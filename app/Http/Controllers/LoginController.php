@@ -17,29 +17,33 @@ class LoginController extends Controller
     public function auth(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+            'name' => 'required',
+            'password' => 'required'
         ]);
- 
-        if (Auth::attempt($credentials)) {
+
+        if (Auth::attempt($credentials, $request->checkRemember)) {
             $request->session()->regenerate();
- 
-            return redirect()->intended('/pengguna');
+
+            $user = Auth::user();
+            if ($user->is_admin) {
+                return redirect()->intended('/admin');
+            } else {
+                return redirect()->intended('/pengguna');
+            }
         }
- 
+
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
+            'name' => 'Tidak ada akun yang cocok dengan inputan anda'
+        ])->onlyInput('name');
+
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }
