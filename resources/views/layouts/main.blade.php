@@ -25,30 +25,31 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">Sistem Informasi Layanan Sub-Bagian Umum dan BMN FKIP ULM</span>
+				<a class="sidebar-brand" href="{{ route("home") }}">
+          <span class="align-middle">Sub-Bagian Umum dan BMN FKIP ULM</span>
         </a>
 
-				<ul class="sidebar-item active">
-					<a class="sidebar-link">
-              			<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
+				<div class="sidebar-item">
+					
+			            <a class="sidebar-link" href="{{ route("admin") }}">
+					<i class="bi bi-sliders2-vertical"></i> <span class="align-middle">Beranda</span><hr></a>
+					
+					<a class="sidebar-link" href="{{ route("dataruangan") }}">
+					<i class="bi bi-house"></i> <span class="align-middle">Data Ruangan</span></a>
+					
+					<a class="sidebar-link" href="{{ route("dataalat") }}">
+					<i class="bi bi-box-seam"></i> <span class="align-middle">Data Alat</span></a>
+					
+					<a class="sidebar-link" href="{{ route("laporan") }}">
+					<i class="bi bi-file-earmark"></i> <span class="align-middle">Laporan</span><hr></a>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{ route("admintempat") }}">
-							<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span>
-			  
-            </a>
-					</li>
+					<a class="sidebar-link" href="{{ route("admintempat") }}">
+					<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{ route("adminalat") }}">
-							<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span>
-            </a>
-					</li>
+					<a class="sidebar-link" href="{{ route("adminalat") }}">
+					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>			
 
-				</ul>
+				</div>
 			</div>
 		</nav>
 
@@ -198,10 +199,10 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="assets/img/profile.jpeg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">User</span>
+                <img src="assets/img/profile.jpeg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark"></span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="{{ route('logout-user') }}">Log out</a>
+								<a class="dropdown-item" href="logout-user">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -234,4 +235,5 @@
 	<script src="{{ asset('static/js/app.js') }}"></script>
 
 </body>
+
 </html>

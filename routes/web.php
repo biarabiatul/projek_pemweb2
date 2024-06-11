@@ -23,6 +23,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'show'])->name('admin');
     Route::get('/adminalat', [AdminController::class, 'showalat'])->name('adminalat');
     Route::get('/admintempat', [AdminController::class, 'showtempat'])->name('admintempat');
+    Route::get('/dataruangan', [AdminController::class, 'dataruangan'])->name('dataruangan');
+    Route::get('/dataalat', [AdminController::class, 'dataalat'])->name('dataalat');
+    Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
     // Route::get('/admin-alat', [AdminController::class, 'show'])->name('admin-alat');
 
     Route::get('logout-user', function(){
