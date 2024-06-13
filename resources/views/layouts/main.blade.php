@@ -41,12 +41,25 @@
 					
 					<a class="sidebar-link" href="{{ route("laporan") }}">
 					<i class="bi bi-file-earmark"></i> <span class="align-middle">Laporan</span><hr></a>
-					@endcan
+					
 					<a class="sidebar-link" href="{{ route("admintempat") }}">
 					<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
 
 					<a class="sidebar-link" href="{{ route("adminalat") }}">
-					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>			
+					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>		
+					@endcan
+
+					@cannot('admin')
+					<a class="sidebar-link" href="{{ route('ruangan.show') }}">
+					<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
+
+					<a class="sidebar-link" href="{{ route("adminalat") }}">
+					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
+					
+					<a class="sidebar-link" href="{{ route("adminalat") }}">
+					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Saya</span></a>
+					@endcan
+						
 				</div>
 				
 			</div>

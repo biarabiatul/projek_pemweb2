@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 
@@ -41,4 +42,11 @@ Route::middleware(['admin'])->group(function () {
         Auth::logout();
         return redirect('/');
     })->name('logout-user');
+
 });
+
+Route::get('/penggunaruangan', [RuanganController::class, 'show'])->name('ruangan.show');
+Route::get('/formPinjamRuangan', [RuanganController::class, 'showForm'])->name('form.ruangan');
+
+
+
