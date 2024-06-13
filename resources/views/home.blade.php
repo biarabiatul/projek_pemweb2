@@ -42,9 +42,8 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#home" class="">Home</a></li>
-          <li><a href="login">Peminjaman Alat</a></li>
-          <li><a href="login">Peminjaman Tempat</a></li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="#" class="">Tutorial</a></li>          
+          <li><a href="{{ route("about") }}">About</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -65,9 +64,6 @@
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
             <h1 class="">Ingin reservasi tempat dan meminjam alat di FKIP ULM?</h1>
             <p class="">Silakan gunakan website ini!</p>
-            <div class="d-flex">
-              <a href="login" class="btn-get-started">Login</a>
-            </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
             <img src="assets/img/fkip(1).jpg" class="img-fluid animated" alt="">
@@ -83,59 +79,36 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>NemoCry Team</h2>
-        <p>Selamat menggunakan website dari kami!</p>
+        <h2>Layanan Sub-bagian Umum & BMN FKIP ULM</h2>
+        {{-- <p>Selamat menggunakan website dari kami!</p> --}}
       </div><!-- End Section Title -->
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="row">
+          <div class="col-md-6 text-center" data-aos="fade-up">
+            <div class="card">
+              
+              <div class="card-body">
+                <i class="bi bi-house-add" style="font-size: 4em;"></i>
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/fadhil.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Muhammad Nur Fadhillah</h4>
-                <span>Mahasiswa</span>
-                <p>Pendidikan Komputer</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
+                <h5 class="card-title">Reservasi Tempat</h5>
+                <p class="card-text">Gunakan layanan ini untuk melakukan reservasi tempat dengan mudah dan cepat</p>
+                <a href="#" class="btn btn-primary">Selengkapnya</a>
               </div>
             </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/atul.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Rabiatul Adawiyah</h4>
-                <span>Mahasiswi</span>
-                <p>Pendidikan Komputer</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
+          </div>
+          <div class="col-md-6 text-center" data-aos="fade-up">
+            <div class="card">
+              
+              <div class="card-body" >
+                <i class="bi bi-box-seam" style="font-size: 4em;" ></i>
+                <h5 class="card-title">Peminjaman Alat</h5>
+                <p class="card-text">Gunakan layanan ini untuk melakukan peminjaman alat dengan praktis dan efisien</p>
+                <a href="#" class="btn btn-primary">Selengkapnya</a>
               </div>
             </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/leli.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Nurleli</h4>
-                <span>Mahasiswi</span>
-                <p>Pendidikan Komputer</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""> <i class="bi bi-linkedin"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
+          </div>
         </div>
 
       </div>
