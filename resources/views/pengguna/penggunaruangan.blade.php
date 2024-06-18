@@ -44,7 +44,8 @@
                       <p class="card-text">Lokasi : {{ $room->lokasi }}</p>
                       <p class="card-text">Deskripsi :{{ $room->deskripsi }}</p>
                       @endforeach   
-                      <a href="#" class="btn btn-primary">Reservasi</a>
+                      <a href="pengguna/formPinjamRuangan" class="btn btn-primary">Pinjam</a>
+                      <a href="#" class="btn btn-primary">Detail</a>
                     </div>
                   </div>
             </div>

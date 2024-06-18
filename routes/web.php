@@ -9,10 +9,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TutorialController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'show'])->name('about');
+Route::get('/tutorial', [TutorialController::class, 'show'])->name('tutorial');
 Route::get('/penggunaruangan', [RuanganController::class, 'show'])->name('ruangan.show');
 Route::get('/formPinjamRuangan', [RuanganController::class, 'showForm'])->name('ruangan.showForm');
 
@@ -33,6 +35,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dataruangan', [AdminController::class, 'dataruangan'])->name('dataruangan');
     Route::get('/dataalat', [AdminController::class, 'dataalat'])->name('dataalat');
     Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
+    Route::get('/peminjamanSaya', [AdminController::class, 'peminjamanSaya'])->name('peminjamanSaya');
     // Route::get('/admin-alat', [AdminController::class, 'show'])->name('admin-alat');
 
     Route::get('logout-user', function(){

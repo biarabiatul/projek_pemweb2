@@ -31,4 +31,13 @@ class AdminController extends Controller
     {
         return view('admin/laporan');
     }
+    public function peminjamanSaya() 
+    {
+        return view('admin/peminjamanSaya');
+    }
+
+    public function penggunaruangan() 
+    {
+        return view('pengguna/penggunaruangan');
+    }
 }

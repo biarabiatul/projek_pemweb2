@@ -30,7 +30,7 @@
         </a>
 				<div class="sidebar-item">
 					
-			            <a class="sidebar-link" href="{{ route("admin") }}">
+			        <a class="sidebar-link" href="{{ route("pengguna") }}">
 					<i class="bi bi-sliders2-vertical"></i> <span class="align-middle">Beranda</span><hr></a>
 					@can('admin')
 					<a class="sidebar-link" href="{{ route("dataruangan") }}">
@@ -56,7 +56,7 @@
 					<a class="sidebar-link" href="{{ route("adminalat") }}">
 					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
 					
-					<a class="sidebar-link" href="{{ route("adminalat") }}">
+					<a class="sidebar-link" href="{{ route("peminjamanSaya") }}">
 					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Saya</span></a>
 					@endcan
 						

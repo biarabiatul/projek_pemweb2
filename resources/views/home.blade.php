@@ -42,7 +42,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#home" class="">Home</a></li>
-          <li><a href="#" class="">Tutorial</a></li>          
+          <li><a href="{{ route("tutorial") }}" class="">Tutorial</a></li>          
           <li><a href="{{ route("about") }}">About</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
