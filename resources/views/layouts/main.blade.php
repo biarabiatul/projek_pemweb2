@@ -30,10 +30,10 @@
         </a>
 				<div class="sidebar-item">
 					
-			        <a class="sidebar-link" href="{{ route("pengguna") }}">
+			            <a class="sidebar-link" href="{{ route("dashboard") }}">
 					<i class="bi bi-sliders2-vertical"></i> <span class="align-middle">Beranda</span><hr></a>
 					@can('admin')
-					<a class="sidebar-link" href="{{ route("dataruangan") }}">
+					<a class="sidebar-link" href="{{ route("ruangan.showAdmin") }}">
 					<i class="bi bi-house"></i> <span class="align-middle">Data Ruangan</span></a>
 					
 					<a class="sidebar-link" href="{{ route("dataalat") }}">
@@ -50,13 +50,13 @@
 					@endcan
 
 					@cannot('admin')
-					<a class="sidebar-link" href="{{ route('ruangan.show') }}">
+					<a class="sidebar-link" href="{{ route('ruangan.showPengguna') }}">
 					<i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
 
-					<a class="sidebar-link" href="{{ route("adminalat") }}">
+					<a class="sidebar-link" href="#">
 					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
 					
-					<a class="sidebar-link" href="{{ route("peminjamanSaya") }}">
+					<a class="sidebar-link" href="#">
 					<i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Saya</span></a>
 					@endcan
 						

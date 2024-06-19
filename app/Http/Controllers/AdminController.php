@@ -19,10 +19,6 @@ class AdminController extends Controller
     {
         return view('admin/admintempat');
     }
-    public function dataruangan() 
-    {
-        return view('admin/dataruangan');
-    }
     public function dataalat() 
     {
         return view('admin/dataalat');
@@ -30,14 +26,5 @@ class AdminController extends Controller
     public function laporan() 
     {
         return view('admin/laporan');
-    }
-    public function peminjamanSaya() 
-    {
-        return view('admin/peminjamanSaya');
-    }
-
-    public function penggunaruangan() 
-    {
-        return view('pengguna/penggunaruangan');
     }
 }

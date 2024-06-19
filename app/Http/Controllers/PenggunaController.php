@@ -10,5 +10,9 @@ class PenggunaController extends Controller
     {
         return view('pengguna/pengguna');
     }
+    public function showRuangan()
+    {
+        return view('pengguna/penggunaruangan');
+    }
     
 }

@@ -7,10 +7,15 @@ use Illuminate\Http\Request;
 
 class RuanganController extends Controller
 {
-    public function show(){
+    public function showPengguna(){
         $data['ruangan'] = RuanganModel::all();
 
         return view('pengguna/penggunaruangan', $data);
+    }
+    public function showAdmin(){
+        $data['ruangan'] = RuanganModel::all();
+
+        return view('admin/dataruangan', $data);
     }
     public function showForm(){
 
