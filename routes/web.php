@@ -17,8 +17,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 Route::get('/penggunaruangan', [RuanganController::class, 'showPengguna'])->name('ruangan.showPengguna');
 Route::get('/tutorial', [TutorialController::class, 'show'])->name('tutorial');
+
 Route::get('/dataruangan', [RuanganController::class, 'showAdmin'])->name('ruangan.showAdmin');
 Route::get('/formPinjamRuangan', [RuanganController::class, 'showForm'])->name('ruangan.showForm');
+Route::post('/admin/dataruangan', [RuanganController::class, 'store'])->name('ruangan.store');
+Route::delete('/admin/ruangan/delete', [RuanganController::class, 'delete'])->name('ruangan.delete');
+Route::get('/admin/dataruangan/{id}/edit', [RuanganController::class, 'edit'])->name('ruangan.edit');
+Route::put('/admin/dataruangan/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');

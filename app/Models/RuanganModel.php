@@ -10,4 +10,5 @@ class RuanganModel extends Model
     use HasFactory;
     protected $table = 'ruangan';
     protected $fillable = ['nama_ruangan', 'kapasitas', 'lokasi', 'deskripsi', 'thumbnail'];
+    
 }
