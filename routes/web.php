@@ -35,7 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
     Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
     Route::get('/peminjaman-saya', [PeminjamanRuanganController::class, 'index'])->name('peminjamanSaya.index');
-
+    Route::get('/form-peminjaman', [PeminjamanRuanganController::class, 'create'])->name('peminjaman.create');
+    Route::post('/form-peminjaman', [PeminjamanRuanganController::class, 'store'])->name('peminjaman.store');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');

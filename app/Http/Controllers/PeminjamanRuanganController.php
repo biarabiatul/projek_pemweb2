@@ -16,26 +16,28 @@ class PeminjamanRuanganController extends Controller
 
     public function create()
     {
-        return view('formPinjamRuangan');
+        return view('pengguna/formPinjamRuangan');
     }
 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
             'nama' => 'required|string|max:255',
-            'jumlah' => 'required|integer',
-            'kegiatan' => 'required|string|max:255',
-            'waktu_mulai' => 'required|date_format:H:i', // Format waktu HH:ii
-            'waktu_selesai' => 'required|date_format:H:i', // Format waktu HH:ii
+            'jumlah_peserta' => 'required|integer',
+            'namaKegiatan' => 'required|string|max:255',
+            'waktuMulai' => 'required|date',
+            'waktuSelesai' => 'required|date|after_or_equal:waktuMulai',
         ]);
 
-        // Simpan data peminjaman ruangan
-        PeminjamanRuangan::create($request->all());
+        PeminjamanRuangan::create([
+            'nama_peminjam' => $request->nama,
+            'jumlah_peserta' => $request->jumlah_peserta,
+            'nama_kegiatan' => $request->namaKegiatan,
+            'waktu_mulai' => $request->waktuMulai,
+            'waktu_selesai' => $request->waktuSelesai,
+        ]);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('peminjaman_ruangan.index') // Belum ada route
-                        ->with('success', 'Peminjaman ruangan berhasil dibuat.');
+        return redirect()->route('peminjaman.create')->with('success', 'Peminjaman berhasil diajukan!');
     }
 
     public function show($id)

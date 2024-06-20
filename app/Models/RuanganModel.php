@@ -11,4 +11,9 @@ class RuanganModel extends Model
     protected $table = 'ruangan';
     protected $fillable = ['nama_ruangan', 'kapasitas', 'lokasi', 'deskripsi', 'thumbnail'];
     
+    public function peminjamanRuangan()
+    {
+        return $this->hasMany(PeminjamanRuangan::class);
+    }
+    
 }
