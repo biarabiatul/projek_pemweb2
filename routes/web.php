@@ -11,6 +11,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeminjamanRuanganController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'show'])->name('about');
@@ -28,6 +29,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
     Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
+    Route::get('/peminjaman-saya', [PeminjamanRuanganController::class, 'index'])->name('peminjamanSaya.index');
+
 });
 
 Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');

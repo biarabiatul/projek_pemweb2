@@ -11,7 +11,7 @@ class PeminjamanRuanganController extends Controller
     public function index()
     {
         $peminjaman_ruangan = PeminjamanRuangan::all();
-        return view('peminjaman_ruangan.index', compact('peminjaman_ruangan'));
+        return view('peminjamanSaya', compact('peminjaman_ruangan'));
     }
 
     public function create()
