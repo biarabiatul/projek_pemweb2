@@ -55,7 +55,7 @@
                             <i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
 
                         <a class="sidebar-link" href="{{ route('peminjaman.saya') }}">
-                            <i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Saya</span></a>
+                            <i class="bi bi-list"></i> <span class="align-middle">Peminjaman Saya</span></a>
                     @endcan
 
                 </div>

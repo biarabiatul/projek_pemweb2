@@ -3,7 +3,7 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mt-5">
+<div class="container">
     <h2 class="text-center">Peminjaman Saya</h2>
 
     <!-- Tabel Peminjaman Ruangan -->
