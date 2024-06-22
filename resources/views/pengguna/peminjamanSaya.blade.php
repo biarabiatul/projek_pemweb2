@@ -4,12 +4,13 @@
 
 @section('container')
 <div class="container">
-    <h2 class="text-center">Peminjaman Saya</h2>
+    <h2 class="text-center"><strong>Peminjaman Saya</strong></h2>
 
     <!-- Tabel Peminjaman Ruangan -->
     <h3 class="mt-4">Peminjaman Ruangan</h3>
-    <table class="table table-bordered">
-        <thead>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+        <thead class="text-center">
             <tr>
                 <th>Nama Peminjam</th>
                 <th>Jumlah Peserta</th>
@@ -45,10 +46,13 @@
         </tbody>
     </table>
 
+    <br>
+
     <!-- Tabel Peminjaman Alat -->
     <h3 class="mt-4">Peminjaman Alat</h3>
-    <table class="table table-bordered">
-        <thead>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+        <thead class="text-center">
             <tr>
                 <th>No</th>
                 <th>Nama Alat</th>
@@ -60,7 +64,7 @@
         <tbody>
             @foreach($pinjam_alat as $index => $item)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td class="text-center">{{ $index + 1 }}</td>
                     <td>{{ $item->nama_alat }}</td>
                     <td>{{ $item->stok }}</td>
                     <td>{{ $item->deskripsi }}</td>

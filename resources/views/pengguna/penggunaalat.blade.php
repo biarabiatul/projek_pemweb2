@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mt-5">
-    <h2 class="text-center">Daftar Alat</h2>
+<div class="container">
+    <h2 class="text-center"><strong>Daftar Alat</strong></h2><br>
     <div class="row">
         <div class="col">
             <table class="table table-bordered">
@@ -22,9 +22,10 @@
                         <td>{{ $alat->nama_alat }}</td>
                         <td>{{ $alat->stok }}</td>
                         <td>{{ $alat->deskripsi }}</td>
-                        <td>
+                        <td class="text-center">
                             <a href="{{ route('peminjaman.alat.form', $alat->id) }}" class="btn btn-primary">Pinjam</a>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
