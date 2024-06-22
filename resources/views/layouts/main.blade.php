@@ -58,7 +58,7 @@
                         <a class="sidebar-link" href="{{ route('ruangan.showPengguna') }}">
                             <i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
 
-                        <a class="sidebar-link" href="">
+                        <a class="sidebar-link" href="{{ route('showAlat') }}">
                             <i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
 
                         <a class="sidebar-link" href="{{ route('peminjaman.saya') }}">

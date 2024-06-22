@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class PeminjamanRuanganController extends Controller
 {
-    public function index()
-    {
-        // Menggunakan Query Builder untuk join antara tabel peminjaman_ruangan dan ruangan
-        $reservasi_ruangan = DB::table('peminjaman_ruangan')
-            ->join('ruangan', 'peminjaman_ruangan.ruangan_id', '=', 'ruangan.id')
-            ->select('peminjaman_ruangan.*', 'ruangan.nama_ruangan')
-            ->get();
-
-        return view('pengguna.peminjamanSaya', compact('reservasi_ruangan'));
-    }
 
 public function showForm($id)
 {

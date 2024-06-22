@@ -147,7 +147,7 @@
     </div>
 
     <div class="col-lg-5 order-1 order-lg-2 why-us-img">
-      <img src="assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+      <img src="assets/img/logo-ulm.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
     </div>
   </div>
 
