@@ -12,16 +12,11 @@ class PeminjamanRuangan extends Model
     protected $table = 'peminjaman_ruangan';
 
     protected $fillable = [
-        'nama_peminjam',
-        'jumlah_peserta',
-        'nama_kegiatan',
-        'waktu_mulai',
-        'waktu_selesai',
+        'ruangan_id', 'nama_peminjam', 'jumlah_peserta', 'nama_kegiatan', 'waktu_mulai', 'waktu_selesai',
     ];
-
     public function ruangan()
     {
-        return $this->belongsTo(RuanganModel::class);
+        return $this->belongsTo(RuanganModel::class, 'ruangan_id', 'id');
     }
 
     public function user()

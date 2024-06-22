@@ -1,70 +1,65 @@
+<!-- resources/views/formPinjamRuangan.blade.php -->
 @extends('layouts.main')
+
 @section('container')
-    <style>
-        .form-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Form Peminjaman Ruangan</h2>
 
-        .form-container h2 {
-            margin-bottom: 20px;
-        }
+    <div class="card">
+        <img src="assets/img/fotoruangan/ruangkhd.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Ruang {{ $ruangan->nama_ruangan }}</h5>
+            <p class="card-text">Kapasitas : {{ $ruangan->kapasitas }} orang</p>
+            <p class="card-text">Lokasi : {{ $ruangan->lokasi }}</p>
+            <p class="card-text">Deskripsi : {{ $ruangan->deskripsi }}</p>
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+            <form action="{{ route('peminjaman.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="ruangan_id" value="{{ $ruangan->id }}">
 
-        .form-control {
-            padding: 10px;
-        }
-
-        .btn-primary {
-            margin-top: 10px;
-        }
-    </style>
-
-    <div class="form-container">
-        @if (session('success'))
-            <script>
-                alert("{{ session('success') }}");
-            </script>
-        @endif
-
-        <h2>Form Peminjaman Ruangan</h2>
-        <form action="{{ route('peminjaman.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="nama">Nama Pribadi/Organisasi</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
-            </div>
-            <div class="form-group">
-                <label for="kapasitas">Kapasitas Ruangan</label>
-                <input type="number" class="form-control" id="jumlah_peserta" name="jumlah_peserta"
-                    placeholder="Masukkan kapasitas ruangan" required>
-            </div>
-            <div class="form-group">
-                <label for="namaKegiatan">Nama Kegiatan</label>
-                <input type="text" class="form-control" id="namaKegiatan" name="namaKegiatan"
-                    placeholder="Masukkan nama kegiatan" required>
-            </div>
-            <div class="form-group">
-                <label for="waktuMulai">Waktu Mulai</label>
-                <input type="datetime-local" class="form-control" id="waktuMulai" name="waktuMulai" required>
-            </div>
-            <div class="form-group">
-                <label for="waktuSelesai">Waktu Selesai</label>
-                <input type="datetime-local" class="form-control" id="waktuSelesai" name="waktuSelesai" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                <div class="form-group row">
+                    <label for="nama" class="col-sm-3 col-form-label">Nama Pribadi/Organisasi</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="jumlah_peserta" class="col-sm-3 col-form-label">Jumlah Peserta</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="jumlah_peserta" name="jumlah_peserta" placeholder="Masukkan jumlah peserta" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="namaKegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="namaKegiatan" name="namaKegiatan" placeholder="Masukkan nama kegiatan" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="waktuMulai" class="col-sm-3 col-form-label">Waktu Mulai</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="waktuMulai" name="waktuMulai" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="waktuSelesai" class="col-sm-3 col-form-label">Waktu Selesai</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="waktuSelesai" name="waktuSelesai" required>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
 @endsection

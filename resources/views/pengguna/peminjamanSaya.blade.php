@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.main')
 
 @section('container')
 <div class="container mt-5">
@@ -11,25 +11,29 @@
                 <th>Kegiatan</th>
                 <th>Waktu Mulai</th>
                 <th>Waktu Selesai</th>
+                <th>Ruangan</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($peminjaman_saya as $peminjaman)
+            @foreach($reservasi_ruangan as $item)
             <tr>
-                <td>{{ $peminjaman->nama }}</td>
-                <td>{{ $peminjaman->jumlah }}</td>
-                <td>{{ $peminjaman->kegiatan }}</td>
-                <td>{{ $peminjaman->waktu_mulai }}</td>
-                <td>{{ $peminjaman->waktu_selesai }}</td>
+                <td>{{ $item->nama_peminjam }}</td>
+                <td>{{ $item->jumlah_peserta }}</td>
+                <td>{{ $item->nama_kegiatan }}</td>
+                <td>{{ $item->waktu_mulai }}</td>
+                <td>{{ $item->waktu_selesai }}</td>
+                <td>{{ $item->nama_ruangan }}</td>
                 <td>
-                    <a href="{{ route('peminjaman_ruangan.show', $peminjaman->id) }}" class="btn btn-primary btn-sm">Detail</a>
-                    <a href="{{ route('peminjaman_ruangan.edit', $peminjaman->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('peminjaman_ruangan.destroy', $peminjaman->id) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus peminjaman ini?')">Hapus</button>
-                    </form>
+                    @if($item->status == 'pending')
+                    <span class="badge badge-warning">PENDING</span>
+                    @else
+                    {{ ucfirst($item->status) }}
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('peminjaman.saya', $item->id) }}" class="btn btn-primary btn-sm">Detail</a>
                 </td>
             </tr>
             @endforeach

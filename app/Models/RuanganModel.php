@@ -10,10 +10,10 @@ class RuanganModel extends Model
     use HasFactory;
     protected $table = 'ruangan';
     protected $fillable = ['nama_ruangan', 'kapasitas', 'lokasi', 'deskripsi', 'thumbnail'];
-    
+
     public function peminjamanRuangan()
     {
-        return $this->hasMany(PeminjamanRuangan::class);
+        return $this->hasMany(PeminjamanRuangan::class, 'ruangan_id', 'id');
     }
-    
+
 }

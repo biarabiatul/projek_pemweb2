@@ -3,41 +3,81 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RuanganModel;
 use Illuminate\Http\Request;
 use App\Models\PeminjamanRuangan;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanRuanganController extends Controller
 {
     public function index()
     {
-        $peminjaman_ruangan = PeminjamanRuangan::all();
-        return view('peminjamanSaya', compact('peminjaman_ruangan'));
+        // Menggunakan Query Builder untuk join antara tabel peminjaman_ruangan dan ruangan
+        $reservasi_ruangan = DB::table('peminjaman_ruangan')
+            ->join('ruangan', 'peminjaman_ruangan.ruangan_id', '=', 'ruangan.id')
+            ->select('peminjaman_ruangan.*', 'ruangan.nama_ruangan')
+            ->get();
+
+        return view('pengguna.peminjamanSaya', compact('reservasi_ruangan'));
     }
 
-    public function create()
-    {
-        return view('pengguna/formPinjamRuangan');
+public function showForm($id)
+{
+    $ruangan = RuanganModel::find($id);
+
+    if (!$ruangan) {
+        abort(404);
     }
 
-    public function store(Request $request)
+    return view('pengguna/formPinjamRuangan', [
+        'ruangan' => $ruangan,
+    ]);
+}
+
+
+public function store(Request $request)
+{
+    // Validasi request
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'jumlah_peserta' => 'required|integer',
+        'namaKegiatan' => 'required|string|max:255',
+        'waktuMulai' => 'required|date',
+        'waktuSelesai' => 'required|date|after_or_equal:waktuMulai',
+        'ruangan_id' => 'required|exists:ruangan,id' // Pastikan ruangan_id valid
+    ]);
+
+    // Simpan data ke dalam database
+    PeminjamanRuangan::create([
+        'nama_peminjam' => $request->nama,
+        'jumlah_peserta' => $request->jumlah_peserta,
+        'nama_kegiatan' => $request->namaKegiatan,
+        'waktu_mulai' => $request->waktuMulai,
+        'waktu_selesai' => $request->waktuSelesai,
+        'ruangan_id' => $request->ruangan_id
+    ]);
+
+    // Redirect ke halaman peminjaman saya dengan pesan sukses
+    return redirect()->route('peminjaman.saya')->with('success', 'Peminjaman berhasil diajukan!');
+}
+
+
+
+    public function adminIndex()
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'jumlah_peserta' => 'required|integer',
-            'namaKegiatan' => 'required|string|max:255',
-            'waktuMulai' => 'required|date',
-            'waktuSelesai' => 'required|date|after_or_equal:waktuMulai',
-        ]);
+        // Mengambil semua data peminjaman untuk admin
+        $peminjaman = PeminjamanRuangan::all();
 
-        PeminjamanRuangan::create([
-            'nama_peminjam' => $request->nama,
-            'jumlah_peserta' => $request->jumlah_peserta,
-            'nama_kegiatan' => $request->namaKegiatan,
-            'waktu_mulai' => $request->waktuMulai,
-            'waktu_selesai' => $request->waktuSelesai,
-        ]);
+        return view('admin/adminPinjamRuangan', compact('peminjaman'));
+    }
 
-        return redirect()->route('peminjaman.create')->with('success', 'Peminjaman berhasil diajukan!');
+    public function updateStatus(Request $request, $id)
+    {
+        $peminjaman = PeminjamanRuangan::findOrFail($id);
+        $peminjaman->status = $request->status;
+        $peminjaman->save();
+
+        return redirect()->route('admin.peminjaman.index')->with('success', 'Status peminjaman berhasil diperbarui');
     }
 
     public function show($id)
@@ -76,5 +116,5 @@ class PeminjamanRuanganController extends Controller
         return redirect()->route('peminjaman_ruangan.index')
                         ->with('success', 'Peminjaman ruangan berhasil dihapus.');
     }
-        
+
 }

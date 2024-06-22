@@ -34,9 +34,10 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
     Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
-    Route::get('/peminjaman-saya', [PeminjamanRuanganController::class, 'index'])->name('peminjamanSaya.index');
+    Route::get('/peminjaman-saya', [PeminjamanRuanganController::class, 'index'])->name('peminjaman.saya');
     Route::get('/form-peminjaman', [PeminjamanRuanganController::class, 'create'])->name('peminjaman.create');
     Route::post('/form-peminjaman', [PeminjamanRuanganController::class, 'store'])->name('peminjaman.store');
+    Route::get('/formPinjamRuangan/{ruangan_id}', [PeminjamanRuanganController::class, 'showForm'])->name('formPinjamRuangan');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
@@ -47,6 +48,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // Route::get('/dataruangan', [AdminController::class, 'dataruangan'])->name('dataruangan');
     Route::get('/dataalat', [AdminController::class, 'dataalat'])->name('dataalat');
     Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
+    Route::get('/admin/peminjaman', [PeminjamanRuanganController::class, 'adminIndex'])->name('admin.peminjaman.index');
+    Route::post('/admin/peminjaman/{id}/update-status', [PeminjamanRuanganController::class, 'updateStatus'])->name('admin.peminjaman.updateStatus');
 });
 
 

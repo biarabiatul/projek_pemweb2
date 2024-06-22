@@ -10,8 +10,11 @@ class RuanganController extends Controller
 {
     public function showPengguna()
     {
-        $data['ruangan'] = RuanganModel::all();
-        return view('pengguna.penggunaruangan', $data);
+        $ruangan_admin = RuanganModel::all(); // Ambil semua data ruangan dari model RuanganModel
+
+        return view('pengguna.penggunaruangan', [
+            'ruangan_admin' => $ruangan_admin, // Kirimkan data ruangan ke view dengan nama 'ruangan_admin'
+        ]);
     }
 
     public function showAdmin()
@@ -92,18 +95,18 @@ class RuanganController extends Controller
                     'deskripsi' => 'nullable|string',
                     'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 ]);
-            
+
                 // Temukan ruangan berdasarkan id
                 $ruangan = RuanganModel::findOrFail($id);
-            
+
                 // Proses menyimpan gambar thumbnail jika ada
                 $thumbnailPath = $ruangan->thumbnail;
-            
+
                 if ($request->hasFile('thumbnail')) {
                     $thumbnail = $request->file('thumbnail');
                     $thumbnailPath = $thumbnail->store('thumbnails', 'public');
                 }
-            
+
                 // Update data ruangan
                 $ruangan->update([
                     'nama_ruangan' => $request->nama_ruangan,
@@ -112,8 +115,8 @@ class RuanganController extends Controller
                     'deskripsi' => $request->deskripsi,
                     'thumbnail' => $thumbnailPath,
                 ]);
-            
+
                 return redirect()->route('ruangan.showAdmin')->with('success', 'Room updated successfully.');
             }
-            
+
 }
