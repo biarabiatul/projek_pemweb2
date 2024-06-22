@@ -79,7 +79,7 @@
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
-                                <img src="{{ asset('assets/img/profile.jpeg') }}" class="avatar img-fluid rounded me-1" /> <span
+                                <img src="{{ asset('assets/img/profile.jpg') }}" class="avatar img-fluid rounded me-1" /> <span
                                     class="text-dark">{{ Auth::user()->name }}</span>
                             </a>
                             @can('admin')
