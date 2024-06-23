@@ -1,4 +1,3 @@
-<!-- resources/views/formPinjamRuangan.blade.php -->
 @extends('layouts.main')
 
 @section('container')

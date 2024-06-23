@@ -86,19 +86,27 @@
                                     @error('passwordInput_confirmation')
                                     <div class="invalid-feedback">
                                         {{ $message }}
-                                    </div>                            
+                                    </div>
                                     @enderror
                                 </div>
-    
+
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
                                         <input type="checkbox" name="remember" id="remember" class="form-check-input">
                                         <label for="remember" class="form-check-label">Remember Me</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ms-auto">
-                                        Register
-                                    </button>
                                 </div>
+                                <br>
+                                <div class="mb-3">
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                                <p style="text-align: center">Sudah punya Akun?
+                                    <a href="{{ route('login') }}">Login</a>
+                                </p>
                             </form>
                         </div>
                     </div>
