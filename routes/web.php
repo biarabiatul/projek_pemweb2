@@ -36,6 +36,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
     Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
     Route::get('/show-alat', [AlatController::class, 'showAlat'])->name('showAlat');
@@ -56,9 +57,14 @@ Route::middleware(['auth'])->group(function () {
     // Route untuk menyimpan peminjaman ruangan
     Route::post('/peminjaman/ruangan', [PeminjamanController::class, 'storeRuangan'])->name('peminjaman.ruangan.store');
 
+    Route::get('logout-user', function(){
+        Auth::logout();
+        return redirect('/');
+    })->name('logout-user');
+
 });
 
-Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+
 
 // Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 //     Route::get('/adminalat', [AdminController::class, 'showalat'])->name('adminalat');
@@ -75,12 +81,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // Route::get('/admintempat', [AdminController::class, 'manajemenPeminjaman'])->name('admin.admintempat');
 
     Route::get('/dataruangan', [RuanganController::class, 'showAdmin'])->name('ruangan.showAdmin');
-    
+
     Route::post('/admin/dataruangan', [RuanganController::class, 'store'])->name('ruangan.store');
     Route::delete('/admin/ruangan/delete', [RuanganController::class, 'delete'])->name('ruangan.delete');
     Route::get('/admin/dataruangan/{id}/edit', [RuanganController::class, 'edit'])->name('ruangan.edit');
     Route::put('/admin/dataruangan/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
-   
+
     Route::post('/dataalat', [AlatController::class, 'store'])->name('alat.store');
     Route::delete('/dataalat/{id}', [AlatController::class, 'delete'])->name('alat.delete');
     Route::get('/dataalat/{id}/edit', [AlatController::class, 'edit'])->name('alat.edit');
@@ -96,23 +102,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
     Route::get('/admin/peminjaman', [PeminjamanRuanganController::class, 'adminIndex'])->name('admin.peminjaman.index');
     Route::post('/admin/peminjaman/{id}/update-status', [PeminjamanRuanganController::class, 'updateStatus'])->name('admin.peminjaman.updateStatus');
-    
+
     Route::get('/logout-admin', function(){
         Auth::logout();
         return redirect('/');
     })->name('logout-admin');
 });
-
-    Route::get('logout-user', function(){
-        Auth::logout();
-        return redirect('/');
-    })->name('logout-user');
-    Route::get('logout-user', function(){
-        Auth::logout();
-        return redirect('/');
-    })->name('logout-user');
-
-    Route::get('logout-user', function(){
-        Auth::logout();
-        return redirect('/');
-    })->name('logout-user');
