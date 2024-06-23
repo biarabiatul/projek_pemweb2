@@ -88,13 +88,6 @@
                                     </div>
                                     @enderror
                                 </div>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                                        <label for="remember" class="form-check-label">Remember Me</label>
-                                    </div>
-                                </div>
                                 <br>
                                 <div class="mb-3">
                                     <div class="d-grid">
