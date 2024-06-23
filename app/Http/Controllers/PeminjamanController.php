@@ -123,4 +123,26 @@ class PeminjamanController extends Controller
         // Redirect ke halaman peminjaman saya dengan pesan sukses
         return redirect()->route('peminjaman.saya')->with('success', 'Peminjaman berhasil diajukan!');
     }
+
+    public function searchRuang(Request $request)
+    {
+        $nama_peminjam = $request->input('nama_peminjam');
+
+        // Query untuk mencari data berdasarkan nama peminjam
+        $peminjamanRuangan = PeminjamanRuangan::where('nama_peminjam', 'like', '%' . $nama_peminjam . '%')->get();
+
+        return view('admin.admintempat', compact('peminjamanRuangan'));
+    }
+    
+    public function searchAlat(Request $request)
+    {
+        $nama_peminjam = $request->input('nama_peminjam');
+
+        // Query untuk mencari data berdasarkan nama peminjam
+        $peminjamanRuangan = PeminjamanRuangan::where('nama_peminjam', 'like', '%' . $nama_peminjam . '%')->get();
+
+        return view('admin.admintempat', compact('peminjamanRuangan'));
+    }
+
+
 }

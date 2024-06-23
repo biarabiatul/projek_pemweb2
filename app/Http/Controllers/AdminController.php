@@ -45,6 +45,7 @@ class AdminController extends Controller
         ]);
     }
 
+
     public function updateStatusRuangan(Request $request, $id)
     {
         $peminjaman = PeminjamanRuangan::findOrFail($id);
@@ -73,4 +74,18 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Status peminjaman alat berhasil diperbarui.');
     }
+
+    public function laporanPeminjaman()
+{
+    // Ambil semua data peminjaman alat dan ruangan
+    $peminjamanAlat = PeminjamanAlat::all();
+    $peminjamanRuangan = PeminjamanRuangan::all();
+    
+    // Tampilkan view dengan membawa data peminjaman alat dan ruangan
+    return view('admin/laporan', [
+        'peminjamanAlat' => $peminjamanAlat,
+        'peminjamanRuangan' => $peminjamanRuangan,
+    ]);
+}
+
 }

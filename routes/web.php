@@ -12,10 +12,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PeminjamanController;
-use App\Http\Controllers\PeminjamanAlatController;
-use App\Http\Controllers\PeminjamanSayaController;
-use App\Http\Controllers\PeminjamanRuanganController;
+use App\Http\Controllers\PeminjamanController;;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'show'])->name('about');
@@ -65,17 +62,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
-// Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-//     Route::get('/adminalat', [AdminController::class, 'showalat'])->name('adminalat');
-//     Route::get('/admintempat', [AdminController::class, 'showtempat'])->name('admintempat');
-//     // Route::get('/dataruangan', [AdminController::class, 'dataruangan'])->name('dataruangan');
-//     Route::get('/dataalat', [AdminController::class, 'dataalat'])->name('dataalat');
-//     Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
-//     Route::get('/admin/peminjaman', [PeminjamanRuanganController::class, 'adminIndex'])->name('admin.peminjaman.index');
-//     Route::post('/admin/peminjaman/{id}/update-status', [PeminjamanRuanganController::class, 'updateStatus'])->name('admin.peminjaman.updateStatus');
-// });
-
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/adminalat', [AdminController::class, 'showalat'])->name('adminalat');
     // Route::get('/admintempat', [AdminController::class, 'manajemenPeminjaman'])->name('admin.admintempat');
@@ -95,14 +81,18 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admintempat', [AdminController::class, 'manajemenPeminjamanRuangan'])->name('admin.admintempat');
     Route::post('/admin/peminjaman-ruangan/update-status/{id}', [AdminController::class, 'updateStatusRuangan'])->name('admin.peminjaman.ruangan.updateStatus');
-
+    
     Route::get('/adminalat', [AdminController::class, 'manajemenPeminjamanAlat'])->name('admin.adminalat');
     Route::post('/admin/peminjaman-alat/update-status/{id}', [AdminController::class, 'updateStatusAlat'])->name('admin.peminjaman.alat.updateStatus');
 
-    Route::get('/laporan', [AdminController::class, 'laporan'])->name('laporan');
-    Route::get('/admin/peminjaman', [PeminjamanRuanganController::class, 'adminIndex'])->name('admin.peminjaman.index');
-    Route::post('/admin/peminjaman/{id}/update-status', [PeminjamanRuanganController::class, 'updateStatus'])->name('admin.peminjaman.updateStatus');
+    
 
+    Route::get('/laporan', [AdminController::class, 'laporanPeminjaman'])->name('laporan');
+    
+    Route::get('admin/peminjaman-ruangan/search', [PeminjamanController::class, 'searchRuang'])->name('admin.peminjaman.ruangan.search');
+    Route::get('admin/peminjaman-alat/search', [PeminjamanController::class, 'searchAlat'])->name('admin.peminjaman.alat.search');
+
+    
     Route::get('/logout-admin', function(){
         Auth::logout();
         return redirect('/');

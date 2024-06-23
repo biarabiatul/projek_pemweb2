@@ -7,7 +7,7 @@
         <div class="col-lg-4 col-md-6 mb-3">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <a href="#" class="text-decoration-none text-dark">
+                    <a href="{{ route('ruangan.showAdmin') }}" class="text-decoration-none text-dark">
                         <i class="bi bi-house-add display-4"></i>
                         <h2 class="card-title mt-2">Data Ruangan</h2>
                     </a>
@@ -17,7 +17,7 @@
         <div class="col-lg-4 col-md-6 mb-3">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <a href="#" class="text-decoration-none text-dark">
+                    <a href="{{ route('alat.showAdminalat') }}" class="text-decoration-none text-dark">
                         <i class="bi bi-box-seam display-4"></i>
                         <h5 class="card-title mt-2">Data Alat</h5>
                     </a>
@@ -27,7 +27,7 @@
         <div class="col-lg-4 col-md-6 mb-3">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <a href="#" class="text-decoration-none text-dark">
+                    <a href="laporan" class="text-decoration-none text-dark">
                         <i class="bi bi-file-earmark-text display-4"></i>
                         <h5 class="card-title mt-2">Laporan</h5>
                     </a>
@@ -39,7 +39,7 @@
         <div class="col-lg-6 mb-3">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <a href="{{ route('admintempat') }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('admin.admintempat') }}" class="text-decoration-none text-dark">
                         <i class="bi bi-house-add display-4"></i>
                         <h5 class="card-title mt-2">Reservasi Tempat</h5>
                     </a>
@@ -49,7 +49,7 @@
         <div class="col-lg-6 mb-3">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <a href="{{ route('adminalat') }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('admin.adminalat') }}" class="text-decoration-none text-dark">
                         <i class="bi bi-box-seam display-4"></i>
                         <h5 class="card-title mt-2">Peminjaman Alat</h5>
                     </a>

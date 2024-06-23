@@ -1,16 +1,55 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mt-5">
-    <h2 class="text-center">Manajemen Peminjaman Ruangan</h2>
 
+    
     @if(session('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
     @endif
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">Manajemen Peminjaman Ruangan</h2><hr>
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form action="#">
+                                    <div class="mb-3">
+                                        <label for="tanggalawal_alat" class="form-label">Tanggal Awal</label>
+                                        <input type="date" class="form-control" id="tanggalawal_alat" name="tanggalawal_alat">                                                      
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                                <form action="#">
+                                    <div class="mb-3">
+                                        <label for="tanggalakhir_alat" class="form-label">Tanggal Akhir</label>
+                                        <input type="date" class="form-control" id="tanggalakhir_alat" name="tanggalakhir_alat">                                                      
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
 
-    <table class="table table-bordered">
+                                <form action="{{ route('admin.peminjaman.ruangan.search') }}" method="GET" class="row mb-3">
+                                    @csrf
+                                    <div class="col-md-8">
+                                        <div class="mb-3">
+                                            <label for="nama_peminjam" class="form-label">Cari Nama</label>
+                                            <input type="text" class="form-control" id="nama_peminjam" name="nama_peminjam" value="{{ request('nama_peminjam') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-flex align-items-end">
+                                        <button type="submit" class="btn btn-primary mb-3"><i class="bi bi-search"></i> Cari</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>                   
+
+    <table id="ruanganTable" class="table table-bordered text-center">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -38,8 +77,9 @@
                             <option value="pending" {{ $item->status == 'pending' ? 'selected' : '' }}>Pending</option>
                             <option value="disetujui" {{ $item->status == 'disetujui' ? 'selected' : '' }}>Disetujui</option>
                             <option value="ditolak" {{ $item->status == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                            <option value="selesai" {{ $item->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
                         </select>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
+                        <button type="submit" class="btn btn-sm btn-success mt-2">Verifikasi</button>
                     </form>
                 </td>
             </tr>
@@ -47,4 +87,14 @@
         </tbody>
     </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#ruanganTable').DataTable();
+    });
+</script>
 @endsection
