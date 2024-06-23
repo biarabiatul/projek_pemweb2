@@ -43,15 +43,14 @@ class RuanganController extends Controller
             'deskripsi' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
+    
         // Proses menyimpan gambar thumbnail jika ada
         $thumbnailPath = null;
-
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $thumbnailPath = $thumbnail->store('thumbnails', 'public');
         }
-
+    
         // Simpan data ke dalam database
         RuanganModel::create([
             'nama_ruangan' => $request->nama_ruangan,
@@ -60,9 +59,10 @@ class RuanganController extends Controller
             'deskripsi' => $request->deskripsi,
             'thumbnail' => $thumbnailPath,
         ]);
-
+    
         return redirect()->route('ruangan.showAdmin')->with('success', 'Room created successfully.');
     }
+    
     public function delete(Request $request)
         {
             // Validasi terhadap id ruangan

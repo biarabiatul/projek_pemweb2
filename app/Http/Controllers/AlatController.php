@@ -17,94 +17,56 @@ class AlatController extends Controller
         ]);
     }
 
-    public function create()
+    public function showAdminalat()
     {
-        return view('admin.rooms.create');
+        $alats = AlatModel::all();
+        return view('admin.dataalat', compact('alats'));
     }
-
     public function store(Request $request)
     {
         // Validasi data form
         $validatedData = $request->validate([
-            'nama_ruangan' => 'required|string',
-            'kapasitas' => 'required|integer',
-            'lokasi' => 'required|string',
-            'deskripsi' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nama_alat' => 'required|string|max:255',
+            'stok' => 'required|integer',
+            'deskripsi' => 'required|text',
         ]);
-
-        // Proses menyimpan gambar thumbnail jika ada
-        $thumbnailPath = null;
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            $thumbnailPath = $thumbnail->store('thumbnails', 'public');
-        }
-
+        
         // Simpan data ke dalam database
-        RuanganModel::create([
-            'nama_ruangan' => $request->nama_ruangan,
-            'kapasitas' => $request->kapasitas,
-            'lokasi' => $request->lokasi,
-            'deskripsi' => $request->deskripsi,
-            'thumbnail' => $thumbnailPath,
+        AlatModel::create([
+            'nama_alat' => $validatedData['nama_alat'],
+            'stok' => $validatedData['stok'],
+            'deskripsi' => $validatedData['deskripsi'],
         ]);
-
-        return redirect()->route('ruangan.showAdmin')->with('success', 'Room created successfully.');
+        
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->route('alat.showAdminalat')->with('success', 'Alat created successfully.');
     }
-    public function delete(Request $request)
-        {
-            // Validasi terhadap id ruangan
-            $request->validate([
-                'id' => 'required|exists:ruangan,id',
-            ]);
+    
+    public function edit($id)
+    {
+        $alat = AlatModel::findOrFail($id);
+        return view('admin.admineditalat', compact('alat'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'nama_alat' => 'required|string|max:255',
+            'stok' => 'required|integer',
+            'deskripsi' => 'required|deskripsi',
+        ]);
+    
+        $alat = AlatModel::findOrFail($id);
+        $alat->update($validatedData);
+    
+        return redirect()->route('alat.showAdminalat')->with('success', 'Data alat berhasil diperbarui.');
+    }
+    
 
-            // Temukan ruangan berdasarkan id dan hapus
-            $ruangan = RuanganModel::findOrFail($request->id);
-            $ruangan->delete();
-
-            return redirect()->route('ruangan.showAdmin')->with('success', 'Room deleted successfully.');
-        }
-
-        public function edit($id)
-            {
-                // Temukan ruangan berdasarkan id
-                $ruangan = RuanganModel::findOrFail($id);
-
-                return view('admin/admineditruangan', compact('ruangan'));
-            }
-
-            public function update(Request $request, $id)
-            {
-                // Validasi data form
-                $validatedData = $request->validate([
-                    'nama_ruangan' => 'required|string',
-                    'kapasitas' => 'required|integer',
-                    'lokasi' => 'required|string',
-                    'deskripsi' => 'nullable|string',
-                    'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                ]);
-
-                // Temukan ruangan berdasarkan id
-                $ruangan = RuanganModel::findOrFail($id);
-
-                // Proses menyimpan gambar thumbnail jika ada
-                $thumbnailPath = $ruangan->thumbnail;
-
-                if ($request->hasFile('thumbnail')) {
-                    $thumbnail = $request->file('thumbnail');
-                    $thumbnailPath = $thumbnail->store('thumbnails', 'public');
-                }
-
-                // Update data ruangan
-                $ruangan->update([
-                    'nama_ruangan' => $request->nama_ruangan,
-                    'kapasitas' => $request->kapasitas,
-                    'lokasi' => $request->lokasi,
-                    'deskripsi' => $request->deskripsi,
-                    'thumbnail' => $thumbnailPath,
-                ]);
-
-                return redirect()->route('ruangan.showAdmin')->with('success', 'Room updated successfully.');
-            }
+    public function delete($id)
+    {
+        $alat = AlatModel::findOrFail($id);
+        $alat->delete();
+        return redirect()->route('alat.showAdminalat');
+    }
 }

@@ -39,7 +39,7 @@
                         <a class="sidebar-link" href="{{ route('ruangan.showAdmin') }}">
                             <i class="bi bi-house"></i> <span class="align-middle">Data Ruangan</span></a>
 
-                        <a class="sidebar-link" href="{{ route('dataalat') }}">
+                        <a class="sidebar-link" href="{{ route('alat.showAdminalat') }}">
                             <i class="bi bi-box-seam"></i> <span class="align-middle">Data Alat</span></a>
 
                         <a class="sidebar-link" href="{{ route('laporan') }}">
@@ -47,10 +47,10 @@
                             <hr>
                         </a>
 
-                        <a class="sidebar-link" href="{{ route('admintempat') }}">
+                        <a class="sidebar-link" href="{{ route('admin.admintempat') }}">
                             <i class="bi bi-house-add"></i> <span class="align-middle">Reservasi Tempat</span></a>
 
-                        <a class="sidebar-link" href="{{ route('adminalat') }}">
+                        <a class="sidebar-link" href="{{ route('admin.adminalat') }}">
                             <i class="bi bi-box-seam"></i> <span class="align-middle">Peminjaman Alat</span></a>
                     @endcan
 
@@ -236,9 +236,17 @@
                                 <img src="assets/img/profile.jpeg" class="avatar img-fluid rounded me-1"
                                     alt="Charles Hall" /> <span class="text-dark">{{ Auth::user()->name }}</span>
                             </a>
+                            @can('admin')
+                                
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="logout-admin">Log out</a>
+                            </div>
+                            @endcan
+                            @cannot('admin')
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="logout-user">Log out</a>
                             </div>
+                            @endcannot
                         </li>
                     </ul>
                 </div>
