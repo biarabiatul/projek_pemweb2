@@ -3,23 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\AlatModel;
-use App\Models\PeminjamanAlat;
-use App\Models\PeminjamanRuangan;
 use App\Models\RuanganModel;
 use Illuminate\Http\Request;
+use App\Models\PeminjamanAlat;
+use App\Models\PeminjamanRuangan;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanController extends Controller
 {
     public function index()
-    {
-        // Menggunakan Eloquent untuk mengambil data peminjaman alat
-        $pinjam_alat = PeminjamanAlat::with('alat')->get();
+{
+    // Menggunakan Eloquent untuk mengambil data peminjaman alat
+    $pinjam_alat = DB::table('peminjaman_alat')
+        ->join('alat', 'peminjaman_alat.alat_id', '=', 'alat.id')
+        ->select('peminjaman_alat.*', 'alat.*')
+        ->get();
 
-        // Menggunakan Eloquent untuk mengambil data peminjaman ruangan
-        $reservasi_ruangan = PeminjamanRuangan::with('ruangan')->get();
+    // Menggunakan query builder untuk join tabel peminjaman_ruangan dan ruangan
+    $reservasi_ruangan = DB::table('peminjaman_ruangan')
+        ->join('ruangan', 'peminjaman_ruangan.ruangan_id', '=', 'ruangan.id')
+        ->select('peminjaman_ruangan.*', 'ruangan.nama_ruangan as nama_ruangan')
+        ->get();
 
-        return view('pengguna.peminjamanSaya', compact('pinjam_alat', 'reservasi_ruangan'));
-    }
+    return view('pengguna.peminjamanSaya', compact('pinjam_alat', 'reservasi_ruangan'));
+}
+
 
     public function showAlat()
     {
@@ -92,33 +100,27 @@ class PeminjamanController extends Controller
 
     public function storeRuangan(Request $request)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            'ruangan_id' => 'required|exists:ruangan,id',
+        // Validasi request
+        $request->validate([
             'nama' => 'required|string|max:255',
-            'nim' => 'required|string|max:255',
-            'prodi' => 'required|string|max:255',
-            'jumlahPeserta' => 'required|integer|min:1',
-            'keperluan' => 'required|string|max:255',
-            'jamMulai' => 'required|date',
-            'jamSelesai' => 'required|date|after:jamMulai',
-            'nohp' => 'required|string|max:15',
+            'jumlah_peserta' => 'required|integer',
+            'namaKegiatan' => 'required|string|max:255',
+            'waktuMulai' => 'required|date',
+            'waktuSelesai' => 'required|date|after_or_equal:waktuMulai',
+            'ruangan_id' => 'required|exists:ruangan,id'
         ]);
 
-        // Simpan data peminjaman ruangan
+        // Simpan data ke dalam database
         PeminjamanRuangan::create([
-            'ruangan_id' => $validatedData['ruangan_id'],
-            'nama_peminjam' => $request->input('nama'),
-            'nim' => $request->input('nim'),
-            'prodi' => $request->input('prodi'),
-            'jumlah_peserta' => $request->input('jumlahPeserta'),
-            'keperluan' => $request->input('keperluan'),
-            'jam_mulai' => $request->input('jamMulai'),
-            'jam_selesai' => $request->input('jamSelesai'),
-            'no_hp' => $request->input('nohp'),
-            'status' => 'pending'
+            'nama_peminjam' => $request->nama,
+            'jumlah_peserta' => $request->jumlah_peserta,
+            'nama_kegiatan' => $request->namaKegiatan,
+            'waktu_mulai' => $request->waktuMulai,
+            'waktu_selesai' => $request->waktuSelesai,
+            'ruangan_id' => $request->ruangan_id
         ]);
 
-        return redirect()->route('peminjaman.saya')->with('success', 'Peminjaman ruangan berhasil dibuat.');
+        // Redirect ke halaman peminjaman saya dengan pesan sukses
+        return redirect()->route('peminjaman.saya')->with('success', 'Peminjaman berhasil diajukan!');
     }
 }

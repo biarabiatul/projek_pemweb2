@@ -15,7 +15,7 @@ class PeminjamanRuangan extends Model
         'ruangan_id', 'nama_peminjam', 'jumlah_peserta', 'nama_kegiatan', 'waktu_mulai', 'waktu_selesai', 'status'
     ];
     public function ruangan()
-    {       
+    {
         return $this->belongsTo(RuanganModel::class, 'ruangan_id', 'id');
     }
 

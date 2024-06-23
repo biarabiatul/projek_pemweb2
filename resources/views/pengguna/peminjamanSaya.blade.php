@@ -18,7 +18,6 @@
                 <th>Waktu Selesai</th>
                 <th>Nama Ruangan</th>
                 <th>Status</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -32,13 +31,14 @@
                     <td>{{ $item->nama_ruangan }}</td>
                     <td>
                         @if($item->status == 'pending')
-                            <span class="badge badge-warning">PENDING</span>
+                            <span class="badge bg-warning my-2">PENDING</span>
+                        @elseif($item->status == 'disetujui')
+                            <span class="badge bg-success my-2">DISETUJUI</span>
+                        @elseif($item->status == 'ditolak')
+                            <span class="badge bg-danger my-2">DITOLAK</span>
                         @else
                             {{ ucfirst($item->status) }}
                         @endif
-                    </td>
-                    <td>
-                        {{-- <a href="{{ route('peminjaman.detail', ['jenis' => 'ruangan', 'id' => $item->id]) }}" class="btn btn-primary btn-sm">Detail</a> --}}
                     </td>
                 </tr>
             @endforeach
@@ -55,7 +55,6 @@
                 <th>Stok</th>
                 <th>Deskripsi</th>
                 <th>Status</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -67,13 +66,14 @@
                     <td>{{ $item->deskripsi }}</td>
                     <td>
                         @if($item->status == 'pending')
-                            <span class="badge badge-warning">PENDING</span>
+                            <span class="badge bg-warning my-2">PENDING</span>
+                        @elseif($item->status == 'disetujui')
+                            <span class="badge bg-success my-2">DISETUJUI</span>
+                        @elseif($item->status == 'ditolak')
+                            <span class="badge bg-danger my-2">DITOLAK</span>
                         @else
                             {{ ucfirst($item->status) }}
                         @endif
-                    </td>
-                    <td>
-                        {{-- <a href="{{ route('peminjaman.detail', ['jenis' => 'alat', 'id' => $item->id]) }}" class="btn btn-primary btn-sm">Detail</a> --}}
                     </td>
                 </tr>
             @endforeach
