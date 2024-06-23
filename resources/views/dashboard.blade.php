@@ -40,7 +40,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 	<div class="row">
 		<div class="col-6">
@@ -59,7 +59,7 @@
 			<div class="card">
 				<div class="card-body" >
 					<div class="col-md-12 text-center">
-						<a href="#" class="text-decoration-none">							
+						<a href="#" class="text-decoration-none">
 							<i class="bi bi-box-seam"></i>
 							<h5 class="card-title">Peminjaman Alat</h5>
 						</a>
@@ -95,7 +95,7 @@
             <div class="card">
                   <div class="card-body" >
                         <div class="col-md-12 text-center">
-                              <a href="#" class="text-decoration-none">							
+                              <a href="#" class="text-decoration-none">
                                     <i class="bi bi-box-seam"></i>
                                     <h5 class="card-title">Peminjaman Alat</h5>
                               </a>
