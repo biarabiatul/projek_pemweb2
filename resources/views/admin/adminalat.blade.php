@@ -44,8 +44,8 @@
                         @csrf
                         <select name="status" class="form-control form-control-sm">
                             <option value="pending" {{ $item->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="approved" {{ $item->status == 'approved' ? 'selected' : '' }}>Approved</option>
-                            <option value="rejected" {{ $item->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                            <option value="disetujui" {{ $item->status == 'approved' ? 'selected' : '' }}>Approved</option>
+                            <option value="ditolak" {{ $item->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
                     </form>

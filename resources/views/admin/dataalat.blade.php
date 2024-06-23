@@ -2,7 +2,7 @@
 @section('container')
 
 <div class="container">
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -27,11 +27,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <h2 class="text-center">Manajemen Data Alat</h2>
                   <form action="{{ route('alat.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
@@ -42,21 +43,19 @@
                               <label for="stok" class="form-label">Stok</label>
                               <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukkan jumlah stok">
                           </div>                          
-                        <div class="mb-3">
-                            <label for="status" class="form-label">Status</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="baik">Baik</option>
-                                <option value="rusak ringan">Rusak Ringan</option>
-                                <option value="rusak berat">Rusak Berat</option>
-                            </select>
-                        </div>
+                          <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                        </div>                       
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                     
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <table class="table text-center">
@@ -65,7 +64,7 @@
                                 <th>No</th>
                                 <th>Nama Alat</th>
                                 <th>Stok</th>
-                                <th>Status</th>
+                                <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -75,7 +74,7 @@
                                   <td>{{ $index + 1 }}</td>
                                     <td>{{ $alat->nama_alat }}</td>
                                     <td>{{ $alat->stok }}</td>
-                                    <td>{{ $alat->status }}</td>
+                                    <td>{{ $alat->deskripsi }}</td>
                                     <td>
                                         <form action="{{ route('alat.delete', $alat->id) }}" method="post" onsubmit="return confirm('Apakah anda ingin menghapus alat ini?')">
                                             @csrf
@@ -91,6 +90,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

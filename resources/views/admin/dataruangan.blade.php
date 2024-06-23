@@ -2,7 +2,7 @@
 @section('container')
 
 <div class="container">
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -27,11 +27,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <h2 class="text-center">Manajemen Data Ruangan</h2>
                     <form action="{{ route('ruangan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
@@ -67,43 +68,43 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Kapasitas</th>
-                                <th>Lokasi</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($ruangan as $index => $room)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td><div>{{ $room->nama_ruangan }}</div></td>
-                                <td><div>{{ $room->kapasitas }} orang</div></td>
-                                <td><div>{{ $room->lokasi }}</div></td>
-                                <td><span class="badge bg-success">TERSEDIA</span></td>
-                                <td>
-                                      <form action="{{ route('ruangan.delete') }}" method="post" onsubmit="return confirm('Apakah anda ingin menghapus ruangan ini?')">
-                                          @csrf
-                                          @method('delete')
-                                          <a href="{{ route('ruangan.edit', $room->id) }}" class="btn btn-primary">Edit</a>
-                                          <input type="hidden" name="id" value="{{ $room->id }}">
-                                          <button type="submit" class="btn btn-danger">Delete</button>
-                                      </form>
-                                      
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+    </div>
+    <div class="row"></div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Kapasitas</th>
+                            <th>Lokasi</th>
+
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($ruangan as $index => $room)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td><div>{{ $room->nama_ruangan }}</div></td>
+                            <td><div>{{ $room->kapasitas }} orang</div></td>
+                            <td><div>{{ $room->lokasi }}</div></td>
+                            <td>
+                                  <form action="{{ route('ruangan.delete') }}" method="post" onsubmit="return confirm('Apakah anda ingin menghapus ruangan ini?')">
+                                      @csrf
+                                      @method('delete')
+                                      <a href="{{ route('ruangan.edit', $room->id) }}" class="btn btn-primary">Edit</a>
+                                      <input type="hidden" name="id" value="{{ $room->id }}">
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                  </form>
+                                  
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
