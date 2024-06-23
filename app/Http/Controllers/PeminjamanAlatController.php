@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class PeminjamanAlatController extends Controller
 {
-    public function show()
+    public function showAlat()
     {
         return view('pengguna.penggunaalat');
     }

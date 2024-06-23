@@ -23,7 +23,7 @@
                         <td>{{ $alat->stok }}</td>
                         <td>{{ $alat->deskripsi }}</td>
                         <td>
-                            <a href="{{ route('formPinjamAlat', $alat->id) }}" class="btn btn-primary">Pinjam</a>
+                            <a href="{{ route('peminjaman.alat.form', $alat->id) }}" class="btn btn-primary">Pinjam</a>
                         </td>
                     </tr>
                     @endforeach

@@ -1,3 +1,5 @@
+<!-- resources/views/pengguna/peminjamanSaya.blade.php -->
+
 @extends('layouts.main')
 
 @section('container')
@@ -9,12 +11,12 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nama</th>
-                <th>Jumlah</th>
-                <th>Kegiatan</th>
+                <th>Nama Peminjam</th>
+                <th>Jumlah Peserta</th>
+                <th>Nama Kegiatan</th>
                 <th>Waktu Mulai</th>
                 <th>Waktu Selesai</th>
-                <th>Ruangan</th>
+                <th>Nama Ruangan</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -36,7 +38,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('peminjaman.saya', $item->id) }}" class="btn btn-primary btn-sm">Detail</a>
+                        {{-- <a href="{{ route('peminjaman.detail', ['jenis' => 'ruangan', 'id' => $item->id]) }}" class="btn btn-primary btn-sm">Detail</a> --}}
                     </td>
                 </tr>
             @endforeach
@@ -45,8 +47,6 @@
 
     <!-- Tabel Peminjaman Alat -->
     <h3 class="mt-4">Peminjaman Alat</h3>
-    <div class="container mt-5">
-    <h2 class="text-center">Peminjaman Saya</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -60,22 +60,22 @@
         </thead>
         <tbody>
             @foreach($pinjam_alat as $index => $item)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ $item->nama_alat }}</td>
-                <td>{{ $item->stok }}</td>
-                <td>{{ $item->deskripsi }}</td>
-                <td>
-                    @if($item->status == 'pending')
-                        <span class="badge badge-warning">PENDING</span>
-                    @else
-                        {{ ucfirst($item->status) }}
-                    @endif
-                </td>
-                <td>
-                    <a href="{{ route('peminjaman.saya', $item->id) }}" class="btn btn-primary btn-sm">Detail</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $item->nama_alat }}</td>
+                    <td>{{ $item->stok }}</td>
+                    <td>{{ $item->deskripsi }}</td>
+                    <td>
+                        @if($item->status == 'pending')
+                            <span class="badge badge-warning">PENDING</span>
+                        @else
+                            {{ ucfirst($item->status) }}
+                        @endif
+                    </td>
+                    <td>
+                        {{-- <a href="{{ route('peminjaman.detail', ['jenis' => 'alat', 'id' => $item->id]) }}" class="btn btn-primary btn-sm">Detail</a> --}}
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>

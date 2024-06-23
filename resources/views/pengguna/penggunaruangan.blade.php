@@ -16,7 +16,7 @@
                     <p class="card-text">Kapasitas : {{ $room->kapasitas }} orang</p>
                     <p class="card-text">Lokasi : {{ $room->lokasi }}</p>
                     <p class="card-text">Deskripsi : {{ $room->deskripsi }}</p>
-                    <a href="{{ route('formPinjamRuangan', $room->id) }}" class="btn btn-primary">Reservasi</a>
+                    <a href="{{ route('peminjaman.ruangan.form', $room->id) }}" class="btn btn-primary">Reservasi</a>
                 </div>
             </div>
         </div>

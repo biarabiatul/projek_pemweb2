@@ -18,7 +18,7 @@
                 <p class="card-text">Lokasi : {{ $ruangan->lokasi }}</p>
                 <p class="card-text">Deskripsi : {{ $ruangan->deskripsi }}</p>
 
-                <form action="{{ route('peminjaman.store') }}" method="POST">
+                <form action="{{ route('peminjaman.ruangan.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="ruangan_id" value="{{ $ruangan->id }}">
 

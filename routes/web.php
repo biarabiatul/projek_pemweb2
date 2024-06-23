@@ -12,6 +12,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PeminjamanSayaController;
 use App\Http\Controllers\PeminjamanRuanganController;
@@ -37,13 +38,24 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
     Route::get('/pengguna', [PenggunaController::class, 'show'])->name('pengguna');
-    Route::get('/form-peminjaman', [PeminjamanRuanganController::class, 'create'])->name('peminjaman.create');
-    Route::post('/form-peminjaman', [PeminjamanRuanganController::class, 'store'])->name('peminjaman.store');
-    Route::get('/formPinjamRuangan/{ruangan_id}', [PeminjamanRuanganController::class, 'showForm'])->name('formPinjamRuangan');
-    Route::get('/pengunaalat', [AlatController::class, 'showAlat'])->name('showAlat');
-    Route::get('/peminjaman-alat/{id}', [PeminjamanAlatController::class, 'showForm'])->name('formPinjamAlat');
-    Route::post('/peminjaman/store', [PeminjamanAlatController::class, 'store'])->name('peminjaman.store');
-    Route::get('/peminjaman-saya', [PeminjamanSayaController::class, 'index'])->name('peminjaman.saya');
+    Route::get('/show-alat', [AlatController::class, 'showAlat'])->name('showAlat');
+
+
+    // Route untuk menampilkan halaman peminjaman
+    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.saya');
+
+    // Route untuk menampilkan form peminjaman alat
+    Route::get('/peminjaman/alat/{id}', [PeminjamanController::class, 'showFormAlat'])->name('peminjaman.alat.form');
+
+    // Route untuk menyimpan peminjaman alat
+    Route::post('/peminjaman/alat', [PeminjamanController::class, 'storeAlat'])->name('peminjaman.alat.store');
+
+    // Route untuk menampilkan form peminjaman ruangan
+    Route::get('/peminjaman/ruangan/{id}', [PeminjamanController::class, 'showFormRuangan'])->name('peminjaman.ruangan.form');
+
+    // Route untuk menyimpan peminjaman ruangan
+    Route::post('/peminjaman/ruangan', [PeminjamanController::class, 'storeRuangan'])->name('peminjaman.ruangan.store');
+
 });
 
 Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');

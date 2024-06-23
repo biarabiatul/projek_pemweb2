@@ -13,7 +13,7 @@
             <p class="card-text">Stok : {{ $alat->stok }}</p>
             <p class="card-text">Deskripsi : {{ $alat->deskripsi }}</p>
 
-            <form action="{{ route('peminjaman.store') }}" method="POST">
+            <form action="{{ route('peminjaman.alat.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="alat_id" value="{{ $alat->id }}">
 
