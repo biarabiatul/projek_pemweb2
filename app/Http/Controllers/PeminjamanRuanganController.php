@@ -50,9 +50,6 @@ public function store(Request $request)
     // Redirect ke halaman peminjaman saya dengan pesan sukses
     return redirect()->route('peminjaman.saya')->with('success', 'Peminjaman berhasil diajukan!');
 }
-
-
-
     public function adminIndex()
     {
         // Mengambil semua data peminjaman untuk admin

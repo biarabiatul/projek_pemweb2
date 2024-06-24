@@ -13,14 +13,14 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="text-center">Manajemen Peminjaman Alat</h2>
-                <hr>  
+                <hr>
                 <div class="table-responsive">
                     <div class="row">
                         <div class="col-md-4">
                             <form action="#">
                                 <div class="mb-3">
                                     <label for="tanggalawal_alat" class="form-label">Tanggal Awal</label>
-                                    <input type="date" class="form-control" id="tanggalawal_alat" name="tanggalawal_alat">                                                      
+                                    <input type="date" class="form-control" id="tanggalawal_alat" name="tanggalawal_alat">
                                 </div>
                             </form>
                         </div>
@@ -28,7 +28,7 @@
                             <form action="#">
                                 <div class="mb-3">
                                     <label for="tanggalakhir_alat" class="form-label">Tanggal Akhir</label>
-                                    <input type="date" class="form-control" id="tanggalakhir_alat" name="tanggalakhir_alat">                                                      
+                                    <input type="date" class="form-control" id="tanggalakhir_alat" name="tanggalakhir_alat">
                                 </div>
                             </form>
                         </div>
@@ -51,11 +51,11 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%;">No</th>
-                                <th style="width: 15%;">Nama Peminjam</th>
+                                <th style="width: 15%;">Nama Alat</th> <!-- Ganti menjadi Nama Alat -->
                                 <th style="width: 10%;">NIM</th>
                                 <th style="width: 10%;">Prodi</th>
                                 <th style="width: 10%;">Jumlah Pinjam</th>
-                                <th style="width: 15%;">Keperluan</th>
+                                <th style="width: 15%;">Nama Peminjam</th> <!-- Ganti menjadi Nama Peminjam -->
                                 <th style="width: 10%;">Jam Pinjam</th>
                                 <th style="width: 10%;">Jam Kembali</th>
                                 <th style="width: 10%;">No HP</th>
@@ -67,11 +67,11 @@
                             @foreach($peminjamanAlat as $index => $item)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $item->nama_peminjam }}</td>
+                                <td>{{ $item->nama_alat }}</td> <!-- Tampilkan nama alat -->
                                 <td>{{ $item->nim }}</td>
                                 <td>{{ $item->prodi }}</td>
                                 <td>{{ $item->jumlah_pinjam }}</td>
-                                <td>{{ $item->keperluan }}</td>
+                                <td>{{ $item->nama_peminjam }}</td> <!-- Pindahkan nama peminjam ke kolom ini -->
                                 <td>{{ $item->jam_pinjam }}</td>
                                 <td>{{ $item->jam_kembali }}</td>
                                 <td>{{ $item->no_hp }}</td>
@@ -83,10 +83,9 @@
                                     @elseif($item->status == 'ditolak')
                                         <span class="badge bg-danger my-2">DITOLAK</span>
                                     @else
-                                    {{ ucfirst($item->status) }}
-                                                @endif
-                                            </td>
-                                <!-- <td>{{ ucfirst($item->status) }}</td> -->
+                                        {{ ucfirst($item->status) }}
+                                    @endif
+                                </td>
                                 <td>
                                     <form action="{{ route('admin.peminjaman.alat.updateStatus', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
