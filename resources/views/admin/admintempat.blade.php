@@ -1,11 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    @if (session('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
+   
 
     <div class="row">
         <div class="col-md-12">
@@ -51,7 +47,12 @@
                                     </div>
                                 </form>
                             </div>
+                        </div>  
+                        @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
                         </div>
+                        @endif
 
                         <table id="ruanganTable" class="table table-bordered text-center">
                             <thead>

@@ -97,15 +97,28 @@ class AdminController extends Controller
 
     public function laporanPeminjaman()
 {
-    // Ambil semua data peminjaman alat dan ruangan
-    $peminjamanAlat = PeminjamanAlat::all();
-    $peminjamanRuangan = PeminjamanRuangan::all();
+    // Menggunakan query builder untuk join tabel peminjaman_alat dengan alat
+    $peminjamanAlat = DB::table('peminjaman_alat')
+        ->join('alat', 'peminjaman_alat.alat_id', '=', 'alat.id')
+        ->select(
+            'peminjaman_alat.*',
+            'alat.nama_alat'
+        )
+        ->get();
+
+    // Menggunakan query builder untuk join tabel peminjaman_ruangan dengan ruangan
+    $peminjamanRuangan = DB::table('peminjaman_ruangan')
+        ->join('ruangan', 'peminjaman_ruangan.ruangan_id', '=', 'ruangan.id')
+        ->select(
+            'peminjaman_ruangan.*',
+            'ruangan.nama_ruangan'
+        )
+        ->get();
 
     // Tampilkan view dengan membawa data peminjaman alat dan ruangan
-    return view('admin/laporan', [
+    return view('admin.laporan', [
         'peminjamanAlat' => $peminjamanAlat,
         'peminjamanRuangan' => $peminjamanRuangan,
     ]);
 }
-
 }
