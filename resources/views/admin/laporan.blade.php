@@ -64,7 +64,18 @@
                                             <td>{{ $item->nama_kegiatan }}</td>
                                             <td>{{ $item->waktu_mulai }}</td>
                                             <td>{{ $item->waktu_selesai }}</td>
-                                            <td>{{ ucfirst($item->status) }}</td>
+                                            <td>
+                                                @if($item->status == 'pending')
+                                                    <span class="badge bg-warning my-2">PENDING</span>
+                                                @elseif($item->status == 'disetujui')
+                                                    <span class="badge bg-success my-2">DISETUJUI</span>
+                                                @elseif($item->status == 'ditolak')
+                                                    <span class="badge bg-danger my-2">DITOLAK</span>
+                                                @else
+                                                    {{ ucfirst($item->status) }}
+                                                @endif
+                                            </td>
+                                            <!-- <td>{{ ucfirst($item->status) }}</td> -->
                                         </tr>
                                         @endforeach
                                         
@@ -139,7 +150,18 @@
                                             <td>{{ $item->jam_pinjam }}</td>
                                             <td>{{ $item->jam_kembali }}</td>
                                             <td>{{ $item->no_hp }}</td>
-                                            <td>{{ ucfirst($item->status) }}</td>
+                                            <td>
+                                                @if($item->status == 'pending')
+                                                    <span class="badge bg-warning my-2">PENDING</span>
+                                                @elseif($item->status == 'disetujui')
+                                                    <span class="badge bg-success my-2">DISETUJUI</span>
+                                                @elseif($item->status == 'ditolak')
+                                                    <span class="badge bg-danger my-2">DITOLAK</span>
+                                                @else
+                                                    {{ ucfirst($item->status) }}
+                                                @endif
+                                            </td>
+                                                                    <!-- <td>{{ ucfirst($item->status) }}</td> -->
                                         </tr>
                                         @endforeach
                                     </tbody>

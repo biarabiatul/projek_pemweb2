@@ -2,8 +2,8 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Form Peminjaman Alat</h2>
+<div class="container">
+    <h2 class="text-center"><strong>Form Peminjaman Alat</strong></h2><br>
 
     <div class="card">
     <div style="text-align: center;">
