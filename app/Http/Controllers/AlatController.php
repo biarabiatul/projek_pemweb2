@@ -28,7 +28,7 @@ class AlatController extends Controller
         $validatedData = $request->validate([
             'nama_alat' => 'required|string|max:255',
             'stok' => 'required|integer',
-            'deskripsi' => 'required|text',
+            'deskripsi' => 'required|string',
         ]);
         
         // Simpan data ke dalam database
@@ -53,7 +53,7 @@ class AlatController extends Controller
         $validatedData = $request->validate([
             'nama_alat' => 'required|string|max:255',
             'stok' => 'required|integer',
-            'deskripsi' => 'required|deskripsi',
+            'deskripsi' => 'required|string',
         ]);
     
         $alat = AlatModel::findOrFail($id);

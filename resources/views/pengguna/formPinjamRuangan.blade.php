@@ -9,13 +9,12 @@
             <div class="row">
                 <div class="col-md-6 text-center">
                     @foreach (File::glob(public_path('assets/img/fotoruangan/*')) as $file)
-                    <img src="{{ asset('assets/img/fotoruangan/' . basename($file)) }}" class="card-img-top"
-                        style="width: 300px; height: auto;" alt="...">
+                    <img src="{{ Storage::url($ruangan->thumbnail) }}" alt="Gambar {{ $ruangan->nama_ruangan }}" class="card-img-top" style="width: 75 %; height: 200px; object-fit: cover;" >
                     @endforeach
                 </div>
-                <div class="col-md-6">
-                    <div class="text-center">
-                        <h5 class="card-title text-dark">Ruang {{ $ruangan->nama_ruangan }}</h5><br>
+                <div class="col-md-6 mt-5">
+                    <div>
+                        <h2 class="card-title text-dark">Ruang {{ $ruangan->nama_ruangan }}</h2><br>
                     </div>
                     <p class="card-text"><strong>Kapasitas :</strong> {{ $ruangan->kapasitas }} orang</p>
                     <p class="card-text"><strong>Lokasi :</strong> {{ $ruangan->lokasi }}</p>
