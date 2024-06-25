@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PeminjamanAlatExport;
 use Illuminate\Support\Facades\Route;
+use App\Exports\PeminjamanRuanganExport;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -85,7 +88,17 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/adminalat', [AdminController::class, 'manajemenPeminjamanAlat'])->name('admin.adminalat');
     Route::post('/admin/peminjaman-alat/update-status/{id}', [AdminController::class, 'updateStatusAlat'])->name('admin.peminjaman.alat.updateStatus');
 
+    Route::get('/laporan.exportRuanganExcel', function () {
+        $tanggalawal = request()->query('tanggalawal');
+        $tanggalakhir = request()->query('tanggalakhir');
+        return Excel::download(new PeminjamanRuanganExport($tanggalawal, $tanggalakhir), 'peminjaman_ruangan.xlsx');
+    });
     
+    Route::get('/laporan.exportAlatExcel', function () {
+        $tanggalawal = request()->query('tanggalawal');
+        $tanggalakhir = request()->query('tanggalakhir');
+        return Excel::download(new PeminjamanAlatExport($tanggalawal, $tanggalakhir), 'peminjaman_alat.xlsx');
+    });
 
     Route::get('/laporan', [AdminController::class, 'laporanPeminjaman'])->name('laporan');
     

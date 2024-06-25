@@ -84,12 +84,12 @@ class AdminController extends Controller
         $pinjamAlat = DB::table('peminjaman_alat')->where('id', $id)->first();
 
         if ($pinjamAlat->status !== 'disetujui' && $request->status === 'disetujui') {
-            $jumlah_peminjaman = $pinjamAlat->jumlah_peminjaman;
+            $jumlah_peminjaman = $pinjamAlat->jumlah_pinjam;
 
-            DB::table('alat_models')->where('id', $pinjamAlat->alat_id)->decrement('stok', $jumlah_peminjaman);
+            DB::table('alat')->where('id', $pinjamAlat->alat_id)->decrement('stok', $jumlah_peminjaman);
         }
 
-        DB::table('peminjaman_alats')->where('id', $id)->update(['status' => $request->status]);
+        DB::table('peminjaman_alat')->where('id', $id)->update(['status' => $request->status]);
 
         return redirect()->back()->with('success', 'Status peminjaman alat berhasil diperbarui.');
     }

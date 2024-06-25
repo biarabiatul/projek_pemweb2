@@ -2,32 +2,6 @@
 @section('container')
 
 <div class="container">
-    {{-- <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <p>Ruangan</p>
-                    <p>Total ruangan keseluruhan</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <p>Tersedia</p>
-                    <p>Total ruangan tersedia</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <p>Tidak Tersedia</p>
-                    <p>Total ruangan yang sedang dipinjam</p>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card">

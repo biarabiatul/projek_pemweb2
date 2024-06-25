@@ -36,12 +36,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary" onclick="exportPeminjamanRuanganPdf()"><i class="bi bi-file-earmark-arrow-up-fill"></i> Eksport PDF</button>
+                                <button type="button" class="btn btn-success" onclick="exportRuanganExcel()"><i class="bi bi-file-earmark-arrow-up-fill"></i>Eksport Excel</button>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 table-responsive">
                             <table id="ruanganTable" class="table table-bordered text-center">
                             <thead>
                                 <tr>
@@ -76,6 +76,7 @@
                                                 {{ ucfirst($item->status) }}
                                             @endif
                                         </td>
+                                        {{-- {{ ucfirst($item->status) }} --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -116,12 +117,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary" onclick="exportPeminjamanAlatPdf()"><i class="bi bi-file-earmark-arrow-up-fill"></i> Eksport PDF</button>
+                                <button type="button" class="btn btn-success" onclick="exportAlatExcel()"><i class="bi bi-file-earmark-arrow-up-fill"></i>Eksport Excel</button>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 table-responsive">
                             <table id="alatTable" class="table table-bordered text-center">
                         <thead>
                             <tr>
@@ -135,7 +136,6 @@
                                 <th style="width: 10%;">Jam Kembali</th>
                                 <th style="width: 10%;">No HP</th>
                                 <th style="width: 5%;">Status</th>
-                                <th style="width: 10%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -161,7 +161,7 @@
                                         {{ ucfirst($item->status) }}
                                     @endif
                                 </td>
-                                
+                                {{-- {{ ucfirst($item->status) }} --}}
                             </tr>
                             @endforeach
                         </tbody>
@@ -176,16 +176,16 @@
 </div>
 
 <script>
-    function exportRuanganPdf() {
+    function exportRuanganExcel() {
         var tanggalawal = document.getElementById('tanggalawal_ruangan').value;
         var tanggalakhir = document.getElementById('tanggalakhir_ruangan').value;
-        window.location.href = `{{ url('/export/peminjaman-ruangan/pdf') }}?tanggalawal=${tanggalawal}&tanggalakhir=${tanggalakhir}`;
+        window.location.href = `{{ url('admin/laporan.exportRuanganExcel') }}?tanggalawal=${tanggalawal}&tanggalakhir=${tanggalakhir}`;
     }
 
-    function exportAlatPdf() {
+    function exportAlatExcel() {
         var tanggalawal = document.getElementById('tanggalawal_alat').value;
         var tanggalakhir = document.getElementById('tanggalakhir_alat').value;
-        window.location.href = `{{ url('/export/peminjaman-alat/pdf') }}?tanggalawal=${tanggalawal}&tanggalakhir=${tanggalakhir}`;
+        window.location.href = `{{ url('admin/laporan.exportAlatExcel') }}?tanggalawal=${tanggalawal}&tanggalakhir=${tanggalakhir}`;
     }
 </script>
 
